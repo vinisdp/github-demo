@@ -1,62 +1,78 @@
-Minha API TypeScript
-Esta é uma API TypeScript simples que lida com usuários e tarefas. A API tem endpoints para criar, atualizar, excluir e listar usuários e tarefas. Ele também tem endpoints para adicionar tarefas a usuários específicos e para listar todas as tarefas de um usuário específico.
+# Planner
+![nodejs-logo-vector](https://user-images.githubusercontent.com/83310782/218368308-9a7acfc7-f581-4db5-8fc5-9317659ef0bf.svg)
+<p>Este projeto foi utilizado para testar as habilidades adquiridas, nele foi feito um planner para gerenciar e planejar eventos</p>
+<h2>Instalação do node.js no projeto</h2>
+<h3>Passo 1:</h3>
+<p>Execute o comando:</p>
+    
+    $ npm install
+    
+<p>Este comando irá instalar as propriedades do node no projeto</p>
+<h2>Instalação do Yarn</h2>
+<h3>Passo 2:</h3>
+<p>Após intalação do node.js em sua maquina execute o comando:</p>
+            
+    $ npm install --global yarn 
 
-Tecnologias utilizadas
-TypeScript
-Node.js
-Express
-MongoDB
-Mongoose
-Configuração
-Clone este repositório para sua máquina local
-Certifique-se de ter o Node.js instalado em sua máquina
-Instale as dependências executando npm install na pasta raiz do projeto
-Configure as variáveis de ambiente em um arquivo .env. O exemplo do arquivo .env.example está disponível na raiz do projeto.
-Inicie o servidor executando npm start
-Endpoints
-Usuários
-GET /users - lista todos os usuários
-GET /users/:id - lista um usuário pelo ID
-POST /users - cria um novo usuário
-PUT /users/:id - atualiza um usuário existente
-DELETE /users/:id - exclui um usuário existente
-Tarefas
-GET /tasks - lista todas as tarefas
-GET /tasks/:id - lista uma tarefa pelo ID
-POST /tasks - cria uma nova tarefa
-PUT /tasks/:id - atualiza uma tarefa existente
-DELETE /tasks/:id - exclui uma tarefa existente
-GET /users/:userId/tasks - lista todas as tarefas de um usuário
-POST /users/:userId/tasks - adiciona uma nova tarefa a um usuário
-Exemplo de solicitação
-Criar um usuário:
+<p>Este conmando</p>
+<p>Para verificar se a instalação ocorreu de acordo execute o comando:</p>
 
-bash
-Copy code
-POST /users
-Content-Type: application/json
+    $ yarn --version
+    
+<h2>Adicionando o pacote Express</h2>
+<h3>Passo 3:</h3>
+<p>Apos instalar o yarn de modo global execute o comando:</p>
 
-{
-    "name": "João",
-    "email": "joao@email.com",
-    "password": "123456"
-}
-Resposta:
+    $ yarn add express
 
-makefile
-Copy code
-Status: 201 Created
-Content-Type: application/json
+<p>Este comando irá adicionar o express as dependências</p>
+<h2>Instalando nodemon</h2>
+<h3>Passo 4:</h3>
+<p>Basta executar a seguinte linha de comando:</p>
+    
+    $ npm install -g nodemon # or using yarn: yarn global add nodemon
 
-{
-    "_id": "60ac7c17e796bf2c7e13d343",
-    "name": "João",
-    "email": "joao@email.com",
-    "password": "123456",
-    "__v": 0
-}
-Autor
-Seu nome aqui
-
-Licença
-Este projeto está licenciado sob a Licença MIT - consulte o arquivo LICENSE.md para obter detalhes.
+<h2> Instalação UUID </h2>
+<h3>Passo 5:</h3>
+<p>Para instalar as propriedades do UUID basta executar a seguinte linha de comando:</p>
+    
+    npm i @types/uuid
+    
+<h2>Utilização da API<h2>
+<h3>Rotas Post</h3>
+<h4>SingUP<h4>
+<p>localhost:3000/api/v1/user/singup para utilizar essa rota basta ir no postman e utilizar o metodo post selecionar a opção body e mudar para json, em seguida adicionar no corpo o seguinte json<p>
+    
+    {
+      "firstName": "Vinicius",
+      "lastName": "Silva",
+      "birthDate": "07-10-1998",
+      "city": "Bauru",
+      "country": "Brasil",
+      "email": "vini@vini.com",
+      "password": "123",
+      "confirmPassword": "123"
+    }
+    
+<h4>SingIn<h4>
+<p>localhost:3000/api/v1/user/singin para utilizar essa rota basta ir no postman e utilizar o metodo post selecionar a opção body e mudar para json, em seguida adicionar no corpo o seguinte json:<p>
+    
+    {
+      "email": "vini@vini.com",
+      "password": "123"
+    }
+    
+<h4>Criação de Eventos<h4>
+<p>localhost:3000/api/v1/events/ para utilizar essa rota basta ir no postman e utilizar o metodo post selecionar a opção body e mudar para json, em seguida adicionar no corpo o seguinte json:<p>
+    
+    {
+       "description":"Prova de alg2",
+       "dateTime":"2022-11-10T14:47:32.92Z"
+    }
+    
+<h3>Rotas Get</h3>
+<h4>Busca de eventos<h4>
+<p>Existem três maneiras de utilizar a busca, localhost:3000/api/v1/events/:id é uma delas onde buscará um evento atraves de um id especifico, outra forma é a busca geral onde basta bater a rota padrão localhost:3000/api/v1/events/ onde ela retornará todos os eventos e por fim a busca por dia da semana basta acessar a rota padrão  da seguinte localhost:3000/api/v1/events?diaOfTheWeek=Monday (monday é apenas um exemplo poderia ser qualquer dia da semana) essa busca retornará todos os eventos agendados no dia que foi fornecido na query<p>
+<h3>Rotas Delete</h3>
+<h4>Remoção de eventos<h4>
+<p>Existem duas rotas para deletar eventos a primeira é por dia da semana basta colocar o postman em delete e bater a seguinte rota localhost:3000/api/v1/events?diaOfTheWeek=Monday (lembrando que monday é meramente ilustrativo) isso deletará todos os eventos que foram cadastrados naquele dia da semana e a outra opição é por id localhost:3000/api/v1/events/:id onde irá deletar o evento pertencente ao id</p>
